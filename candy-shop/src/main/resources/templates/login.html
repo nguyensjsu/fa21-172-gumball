@@ -1,20 +1,48 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <title>Candy Shop Login</title>
-    </head>
-    <body>
-        <div th:if="${param.error}">
-            Invalid username and password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+<head>
+    <title>Candy Shop Login</title>
+
+    <link rel="stylesheet" href="../static/css/homepage.css" th:href="@{/css/homepage.css}">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class = "topnav">
+        <img class="logo" src="../static/images/candyshoplogo.webp" th:src="@{/images/candyshoplogo.webp}">
+    </div><br>
+
+    <div>
+        <a class="form-group" th:href="@{/homepage}">Candy Shop</a>
+    </div>
+
+    <div class="signup-form">
+
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    
+        <form action="/examples/actions/confirmation.php" th:action="@{/login}" method="post"> <!-- put th:object="${login}" after th action-->
+            <div class="form">
+                <h2>Sign in</h2>
+            </div>
+            <div class="form">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" required="required">
+            </div>
+            
+            <div class="form">
+                <label>Password</label>
+                <input type="text" class="form-control" name="password" required="required">
+            </div>        
+            
+            <div class="form">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+            </div>  
         </form>
-    </body>
+    </div>
+</body>
 </html>
