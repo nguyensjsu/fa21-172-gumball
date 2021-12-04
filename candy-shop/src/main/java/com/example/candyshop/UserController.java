@@ -1,3 +1,4 @@
+
 package com.example.candyshop;
 
 import javax.validation.Valid;
@@ -104,7 +105,8 @@ public class UserController {
     		model.addAttribute("message", "Please enter valid information in the boxes!");
     		return "register";
     	} else {
-    		userRepo.save(user);
+    		user.setRoles("ROLE_USER");
+			userRepo.save(user);
     		log.info("User created " + user);
     		//inMemUserDetManager.createUser(User.withUsername(user.getUsername()).password("{noop}" + user.getPassword()).roles("USER").build());
     		return "welcome";

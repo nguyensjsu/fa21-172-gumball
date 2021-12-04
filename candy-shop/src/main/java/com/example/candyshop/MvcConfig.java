@@ -1,3 +1,4 @@
+
 package com.example.candyshop;
 
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,7 @@ public class MvcConfig implements WebMvcConfigurer {
     registry.addViewController("/").setViewName("home");
     registry.addViewController("/home").setViewName("home");
     registry.addViewController("/welcome").setViewName("welcome");
+    registry.addViewController("/catalog").setViewName("catalog");
     registry.addViewController("/login").setViewName("login");
     registry.addViewController("/register").setViewName("register");
   }

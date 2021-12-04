@@ -31,8 +31,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping(value={"/login"})
 public class LoginController {
+	//NOT USED IN THIS VERSION NEED TO FIGURE THIS OUT LATER
 
 	@Autowired
 	private UserRepository userRepo;
@@ -61,15 +61,15 @@ public class LoginController {
     	}
 
 
-	//@GetMapping
-	//public String login(@ModelAttribute("login") User user, Model model) {
-	//	log.info("Logging in " + user);
-	//	return "login";
-	//}
-
-	@PostMapping
-	public String validLogin(@ModelAttribute("login") User user, Model model) {
+	@GetMapping("/login")
+	public String getAction(@ModelAttribute("login") User user, Model model) {
+		return "login";
+	}
+	/**
+	@PostMapping("/login")
+	public String postAction(@Valid @ModelAttribute("login") User user, Model model, HttpServletRequest request) {
 		System.out.println("Start");
+		log.info("Logging in " + user);
 		User u = userRepo.findByUsername(user.getUsername());
 		if(u.getPassword().equals(user.getPassword())) {
 			log.info("User logged in " + user);
@@ -78,5 +78,7 @@ public class LoginController {
 		else {
 			return "login";
 		}
-	} 
+		return "login";
+	}
+	**/
 }

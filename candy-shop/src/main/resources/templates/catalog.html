@@ -1,19 +1,20 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
 <head >
-    <link href="../static/css/homepage.css" th:href="@{/css/homepage.css}" rel="stylesheet">
+    <link href="../static/css/homepage.css" th:href="@{/css/catalog.css}" rel="stylesheet">
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
 
 </head>
 <body>
-	<div class="login-container">
-            <a th:href="@{/login}">LOGIN</a><br>
-            <a th:href="@{/register}">SIGN UP</a> 
-    </div>
     <div class="topnav">
-        <a th:href="@{/}"></a><img class="logo" src="../static/images/candyshoplogo.png" th:src="@{/images/candyshoplogo.png}"/><br>
+        <a th:href="@{/}"></a><img class="logo" src="../static/images/candyshoplogo.png" th:src="@{/images/candyshoplogo.png}" /><br>
+        <ul>
+            <li><a  th:href="@{/}">Home</a></li>
+            <li><a class="active" th:href="@{/catalog}">Products</a></li>
+            <li><a  th:href="@{/catalog}">IDK THIS LEADS TO PRODUCTS</a></li>
+            <li style="float:right"><a th:href="@{/logout}">LOGOUT</a></li>
+        </ul>
     </div>
 
 <div class="candy"><br>
@@ -33,21 +34,18 @@
         <img src="../static/images/skittles.png" style="widows:  100px;height: 200px;"th:src="@{/images/skittles.png}"/><br>
     	<figcaption class="caption">Skittles Large Bag</figcaption>
     </div>
-    
-    <div class ="shop">
-    	<br><br><a th:href="@{/}">SHOP NOW</a> 
-    </div>
+
     <br><br>
 <hr style="width:auto">
 
-<div class="aboutus">
-	<br><p class="statement">We're your one stop shop for all things candy. Currently online only but will soon be in a mall near you!</p>
-	<br><a style="color:blue;" th:href="@{/}">ABOUT US</a>
-	<br><a style="color:blue;" th:href="@{/}">HELP</a> <p class="sjsu">CMPE 172 Team Gumball</p>
-
-
-	
+<div class="footer">
+    <ul>
+        <li><a  th:href="@{/}">ABOUT US</a></li>
+        <li><a  th:href="@{/}">HELP</a></li>
+        <li style="float:right"><a>CMPE 172 Team Gumball</a></li>
+    </ul>
 </div>
+
 
 </div>
 </body>
