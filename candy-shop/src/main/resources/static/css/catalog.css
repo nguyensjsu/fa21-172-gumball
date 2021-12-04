@@ -1,0 +1,93 @@
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right:auto;
+    width: 10vw;
+    height: 10vh;
+}
+
+.login-container{
+    text-align: right;
+    color: blue;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+.candy{
+    background-color: mediumaquamarine;
+    color: white;
+    height: 400px;
+    width: auto;
+}
+
+.CandyforSale{
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 350px;
+}
+
+.caption{
+    display: block;
+}
+
+.shop{
+    display: block;
+    text-align: center;
+    font-size: 40px;
+    color: blue;
+}
+
+.footer{
+    height: 5vh;
+    width:100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+}
+
+.aboutus{
+    background-color: black;
+}
+
+.statement{
+    font-size: 30px;
+    text-align: center;
+}
+
+.sjsu{
+    text-align: right;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

@@ -1,0 +1,48 @@
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.login-container{
+    text-align: right;
+    color: blue;
+}
+
+.candy{
+    background-color: mediumaquamarine;
+    color: white;
+    height: 400px;
+    width: auto;
+}
+
+.CandyforSale{
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 350px;
+}
+
+.caption{
+    display: block;
+}
+
+.shop{
+    display: block;
+    text-align: center;
+    font-size: 40px;
+    color: blue;
+}
+
+.aboutus{
+    background-color: black;
+}
+
+.statement{
+    font-size: 30px;
+    text-align: center;
+}
+
+.sjsu{
+    text-align: right;
+}

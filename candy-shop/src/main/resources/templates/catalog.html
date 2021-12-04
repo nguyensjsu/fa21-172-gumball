@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
+<head >
+    <link href="../static/css/homepage.css" th:href="@{/css/catalog.css}" rel="stylesheet">
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
+
+</head>
+<body>
+    <div class="topnav">
+        <a th:href="@{/}"></a><img class="logo" src="../static/images/candyshoplogo.png" th:src="@{/images/candyshoplogo.png}" /><br>
+        <ul>
+            <li><a  th:href="@{/}">Home</a></li>
+            <li><a class="active" th:href="@{/catalog}">Products</a></li>
+            <li><a  th:href="@{/catalog}">IDK THIS LEADS TO PRODUCTS</a></li>
+            <li style="float:right"><a th:href="@{/logout}">LOGOUT</a></li>
+        </ul>
+    </div>
+
+<div class="candy"><br>
+    <div class="CandyforSale"> 
+     	<img src="../static/images/sourpatch.png" style="widows:  100px;height: 200px;"th:src="@{/images/sourpatch.png}"/>
+        <figcaption class="caption">Sour Patch Kids</figcaption>
+    </div>
+    <div class="CandyforSale">
+        <img src="../static/images/herseys.png" style="widows:  100px;height: 200px;"th:src="@{/images/herseys.png}"/><br>
+        <figcaption class="caption">XL Herseys Chocolate Bar</figcaption> 
+    </div>
+    <div class="CandyforSale">
+       	<img src="../static/images/nerds.png" style="widows:  100px;height: 200px;"th:src="@{/images/nerds.png}"/><br>
+		<figcaption class="caption">Nerds Rainbow</figcaption>
+    </div>
+    <div class="CandyforSale">
+        <img src="../static/images/skittles.png" style="widows:  100px;height: 200px;"th:src="@{/images/skittles.png}"/><br>
+    	<figcaption class="caption">Skittles Large Bag</figcaption>
+    </div>
+
+    <br><br>
+<hr style="width:auto">
+
+<div class="footer">
+    <ul>
+        <li><a  th:href="@{/}">ABOUT US</a></li>
+        <li><a  th:href="@{/}">HELP</a></li>
+        <li style="float:right"><a>CMPE 172 Team Gumball</a></li>
+    </ul>
+</div>
+
+
+</div>
+</body>
+</html>
