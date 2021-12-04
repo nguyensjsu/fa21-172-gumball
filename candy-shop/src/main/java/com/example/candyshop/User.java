@@ -1,3 +1,4 @@
+
 package com.example.candyshop;
 
 import lombok.*;
@@ -21,3 +22,4 @@ public class User {
 	private String password ;
 	private String roles;
 }
+

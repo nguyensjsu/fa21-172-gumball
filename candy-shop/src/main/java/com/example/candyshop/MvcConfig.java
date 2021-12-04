@@ -1,3 +1,4 @@
+
 package com.example.candyshop;
 
 import org.springframework.context.annotation.Configuration;
