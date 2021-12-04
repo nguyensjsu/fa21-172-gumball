@@ -42,12 +42,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/","/css/**","/images/**", "/homepage","/register").permitAll()
       .anyRequest().authenticated()
       .and()
-            .formLogin()
+            .formLogin().loginPage("/login").permitAll()
+            .failureUrl("/login?error=true")
             .defaultSuccessUrl("/catalog")
             .and()
             .logout()
             .logoutSuccessUrl("/");
     /**
+     *NOTE MIGHT NEED TO CHANGE ABOVE CODE FORM .hasRole to .hasAuthority
       .formLogin()
         .loginPage("/login")
         .permitAll()

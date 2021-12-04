@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class = "topnav">
-        <img class="logo" src="../static/images/candyshoplogo.webp" th:src="@{/images/candyshoplogo.webp}">
+        <img class="logo" src="../static/images/candyshoplogo.png" th:src="@{/images/candyshoplogo.png}">
     </div><br>
 
     <div>
@@ -25,18 +25,18 @@
         You have been logged out.
     </div>
     
-        <form action="#" th:action="@{/login}"  th:object = "${login}" method="POST"> <!-- put th:object="${login}" after th action-->
+        <form action="#" th:action="@{/login}" method="POST"> <!-- put th:object="${login}" after th action-->
             <div class="form">
                 <h2>Sign in</h2>
             </div>
             <div class="form">
                 <label>Username</label>
-                <input type="text" class="form-control" name="username" required="required" th:field=*{username}>
+                <input type="text" class="form-control" name="username" required="required">
             </div>
 
             <div class="form">
                 <label>Password</label>
-                <input type="text" class="form-control" name="password" required="required" th:field=*{password}>
+                <input type="text" class="form-control" name="password" required="required">
             </div>
 
             <div class="form">

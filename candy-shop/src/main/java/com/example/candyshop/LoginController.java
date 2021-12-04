@@ -63,15 +63,13 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public String getAction(@ModelAttribute("login") User user, Model model) {
-		log.info("Get Mapping: " + user);
 		return "login";
 	}
-
+	/**
 	@PostMapping("/login")
 	public String postAction(@Valid @ModelAttribute("login") User user, Model model, HttpServletRequest request) {
 		System.out.println("Start");
 		log.info("Logging in " + user);
-		/**
 		User u = userRepo.findByUsername(user.getUsername());
 		if(u.getPassword().equals(user.getPassword())) {
 			log.info("User logged in " + user);
@@ -79,7 +77,8 @@ public class LoginController {
 		}
 		else {
 			return "login";
-		}**/
+		}
 		return "login";
 	}
+	**/
 }
