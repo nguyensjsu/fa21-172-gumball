@@ -65,6 +65,8 @@ public class LoginController {
 	public String getAction(@ModelAttribute("login") User user, Model model) {
 		return "login";
 	}
+
+
 	/**
 	@PostMapping("/login")
 	public String postAction(@Valid @ModelAttribute("login") User user, Model model, HttpServletRequest request) {
