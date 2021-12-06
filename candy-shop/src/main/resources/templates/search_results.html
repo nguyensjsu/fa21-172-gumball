@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+   <head>
+      <title>Candy Shop Back Office</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   </head>
+	
+   <body>
+      <h1> Candy Shop Back Office for Employee</h1>
+      <h2> Customer Search Result</h2>
+     
+         <table>
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> ID </th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr th:if="${customers.empty}">
+                  <td colspan="2"> No Customers Available </td>
+               </tr>
+               <tr th:each="customer : ${customers}">
+                  <td><span th:text="${customer.firstName}"> First Name </span></td>
+                  <td><span th:text="${customer.customerID}"> Customer ID </span></td>
+               </tr>
+            </tbody>
+         </table>
+         <a href="/search">Perform a search with ID</a>
+   </body>
+	
+</html>

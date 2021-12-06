@@ -18,7 +18,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -26,49 +25,52 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
   UserDetailsService userDetailsService;
 
-  //AUTHENTICATION
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-    //auth.jdbcAuthentication();
+  // AUTHENTICATION
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    // auth.jdbcAuthentication();
     auth.userDetailsService(userDetailsService);
   }
 
-  //AUTHORIZATION
+  // AUTHORIZATION
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable();
     http
-      .authorizeRequests()
-            .antMatchers("/admin").hasRole("ADMIN")
-            .antMatchers("/user").hasAnyRole("ADMIN", "USER")
-            .antMatchers("/","/css/**","/images/**", "/homepage","/register").permitAll()
-      .anyRequest().authenticated()
-      .and()
-            .formLogin().loginPage("/login").permitAll()
-            .failureUrl("/login?error=true")
-            .defaultSuccessUrl("/catalog")
-            .and()
-            .logout()
-            .logoutSuccessUrl("/");
-    /**
-     *NOTE MIGHT NEED TO CHANGE ABOVE CODE FORM .hasRole to .hasAuthority
-      .formLogin()
-        .loginPage("/login")
+        .authorizeRequests()
+        .antMatchers("/admin").hasRole("ADMIN")
+        .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+        .antMatchers("/", "/css/**", "/images/**", "/homepage", "/register", "/backoffice", "/main", "/search_results",
+            "search", "/customers", "/clear")
         .permitAll()
-      .failureUrl("/login?error=true")
-      .defaultSuccessUrl("/welcome")
-      .and()
-      .logout()
-      .logoutSuccessUrl("/homepage");**/
+        .anyRequest().authenticated()
+        .and()
+        .formLogin().loginPage("/login").permitAll()
+        .failureUrl("/login?error=true")
+        .defaultSuccessUrl("/catalog")
+        .and()
+        .logout()
+        .logoutSuccessUrl("/");
+    /**
+     * NOTE MIGHT NEED TO CHANGE ABOVE CODE FORM .hasRole to .hasAuthority
+     * .formLogin()
+     * .loginPage("/login")
+     * .permitAll()
+     * .failureUrl("/login?error=true")
+     * .defaultSuccessUrl("/welcome")
+     * .and()
+     * .logout()
+     * .logoutSuccessUrl("/homepage");
+     **/
 
-    //.antMatchers("/ADMIN PAGES").hasRole("ADMIN")
-    //.antMatchers(|/USER PAGES|).hasAnyRole("User","ADMIN")
-    //.antMatchers("/","/csss/**").permitAll() ....
+    // .antMatchers("/ADMIN PAGES").hasRole("ADMIN")
+    // .antMatchers(|/USER PAGES|).hasAnyRole("User","ADMIN")
+    // .antMatchers("/","/csss/**").permitAll() ....
 
   }
 
   @Override
   public void configure(WebSecurity web) throws Exception {
-    web 
+    web
         .ignoring()
         .antMatchers("/h2-console/**");
   }
@@ -82,5 +84,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   public PasswordEncoder getPasswordEncoder() {
     return NoOpPasswordEncoder.getInstance();
   }
-  
+
 }
