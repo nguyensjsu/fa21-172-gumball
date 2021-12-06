@@ -12,17 +12,17 @@
 _format_version: "1.1"
 
 services:
-- name: payments
+- name: admin
   protocol: http
-  host: payments
-  port: 8080
+  host: admin
+  port: 8083
   path: /
   plugins:
   - name: key-auth  
   routes:
-  - name: api
+  - name: admin
     paths:
-    - /api
+    - /admin
     
 consumers:
 - username: apiclient
