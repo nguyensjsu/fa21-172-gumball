@@ -109,7 +109,7 @@ public class UserController {
 			userRepo.save(user);
     		log.info("User created " + user);
     		//inMemUserDetManager.createUser(User.withUsername(user.getUsername()).password("{noop}" + user.getPassword()).roles("USER").build());
-    		return "welcome";
+    		return "catalog";
     	}
     }
 }

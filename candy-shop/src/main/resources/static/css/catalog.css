@@ -91,3 +91,20 @@ li a:hover:not(.active) {
     margin-right: auto;
     width: 50%;
 }
+
+#centerHoriztonally {
+    display: table;
+    margin: 0 auto;
+}
+  
+#outerCenterHoriz {
+    width:100%
+}
+
+.bulletpoint ul li {
+    display: inline-block;
+}
+
+.bulletpoint ul li:before {
+    content: "• ";
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+   <head>
+      <title>Candy Shop Back Office</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   </head>
+	
+   <body>
+      <h1> Candy Shop Back Office for Employees</h1>
+      <h2> List of Users</h2>
+
+      <style>
+         table, th, td {
+            border:1px solid black;
+         }
+      </style>
+
+      <table style="width:100%">
+             <tr>
+                 <th>User ID</th>
+                 <th>E-mail</th>
+                 <th>First Name</th>
+                 <th>Last Name</th>
+             </tr>
+         <tbody>
+            <div class="login-container">
+               <a th:href="@{/adminRegisterCustomer}">SIGN UP</a> 
+       </div>
+            <form method="POST"  th:action="@{/main/clear}"><input type="submit" value="Clear All Customers"/></form>
+             <tr th:each="customer: ${customers}">
+                 <td th:text="${customer.id}">User ID</td>
+                 <td th:text="${customer.email}">E-mail</td>
+                 <td th:text="${customer.firstname}">First Name</td>
+                 <td th:text="${customer.lastname}">Last Name</td>
+                  <td>
+                 <form method="POST" th:action="@{/main(id=${customer.id})}" th:object="${customer}"><input type="submit" value="Delete"/></form>
+               </td>
+             </tr>
+         </tbody>
+     </table>
+   </body>
+	
+</html>

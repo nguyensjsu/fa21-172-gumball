@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Back Office Main</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1> Candy Shop Back Office for Employee</h1>
+      <h2> Customer Search</h2>
+    <p th:text="'Serving customer: ' + ${firstname} + ' ' + ${lastname}+'!'" />
+    <br>
+    <button type="button" th:onclick="|window.location.href='/search'|">Search with known ID</button>
+</body>
+</html>
