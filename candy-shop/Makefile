@@ -134,3 +134,15 @@ ingress-apply:
 
 ingress-ip:
 	kubectl get ingress spring-gumball-ingress
+
+# RabbitMQ
+rabbit-network-create: docker network create --driver bridge springdemo
+
+rabbit:
+	docker run --name rabbitmq \
+	           --network springdemo \
+			   -p 15672:15672 -p 4369:4369 -p 5672:5672 \
+			   -d rabbitmq:3-management
+
+# console:
+#   open http://localhost:9090

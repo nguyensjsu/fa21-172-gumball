@@ -37,6 +37,15 @@ import lombok.Setter;
 import com.example.cybersource.*;
 import org.springframework.beans.factory.annotation.Value;
 
+import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+
 
 @Slf4j
 @Controller
@@ -137,6 +146,17 @@ public class PaymentsController {
 
     @Autowired
     private PaymentsCommandRepository paymentRepo;
+
+    ConnectionFactory connectionFactory = new CachingConnectionFactory();
+    AmqpAdmin admin = new RabbitAdmin(connectionFactory);
+    AmqpTemplate template = new RabbitTemplate(connectionFactory);
+    private String rabbitMQReceive;
+
+    @RabbitListener(queues = "paymentConfirmation")
+    public void listen(String in) {
+        rabbitMQReceive = in;
+        System.out.println("RabbitMQ reading from PaymentsController: " + rabbitMQReceive);
+    }
 
     @Getter
     @Setter
@@ -288,6 +308,16 @@ public class PaymentsController {
         System.out.println( "Thank You for Your Payment! Your Order Number is: " + order_num );
         model.addAttribute( "message", "Thank You for Your Payment! Your Order Number is: " + order_num ) ;
         paymentRepo.save(command);
+
+        admin.declareQueue(new Queue("paymentConfirmation"));
+        template.convertAndSend("paymentConfirmation", command.email());
+
+        // Wait until we receive the message from RabbitMQ Queue
+        while(rabbitMQReceive == null) {
+            // System.out.println("sleep: " + rabbitMQReceive);
+        }
+
+        model.addAttribute("paymentConfirmation", "SUCCESS! Payment Confirmation sent to: " + rabbitMQReceive);
 
         return "payment";
     }
