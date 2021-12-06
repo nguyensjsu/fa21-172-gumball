@@ -23,11 +23,25 @@ services:
     networks:
       - network
     ports:
-      - 8080
+      - 8081
     environment:
       MYSQL_HOST: "mysql"
     restart: always
-
+  lb:
+    image: eeacms/haproxy
+    depends_on:
+      - payments
+    ports:
+      - "80:5000"
+      - "1936:1936"
+    environment:
+      BACKENDS: "payments"
+      BACKENDS_PORT: "8081"
+      DNS_ENABLED: "true"
+      COOKIES_ENABLED: "false"
+      LOG_LEVEL: "info"
+    networks:
+      - network
 volumes:
   schemas:
     external: false
