@@ -20,15 +20,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.Random;
 import org.springframework.web.servlet.ModelAndView;
+import javax.validation.Valid;
+import org.springframework.validation.Errors;
+import javax.servlet.http.HttpServletRequest;
 
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 @Controller
-@RequestMapping("/main")
+// @RequestMapping("/main")
 public class CustomerController {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Data
     class Message {
@@ -57,23 +63,68 @@ public class CustomerController {
         }
     }
 
-    @GetMapping
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String home(Model model) {
-        System.out.println("testing1");
+        // System.out.println("testing1");
         model.addAttribute("customers", customerRepository.findAll());
         return "main";
     }
 
-    @GetMapping("/main")
+    @RequestMapping(value = "/main", method = RequestMethod.POST)
     public String deleteCustomer(@RequestParam Long id) {
-        System.out.println("testing2");
+        // System.out.println("testing2");
         customerRepository.deleteById(id);
-        return "main";
+        return "redirect:main";
     }
 
-    @DeleteMapping(path = "/clear")
+    @RequestMapping(value = "/main/clear", method = RequestMethod.POST)
     public String clearAllCustomers() {
+        // System.out.println("testing3");
         customerRepository.deleteAll();
-        return "main";
+        return "redirect:/main";
+    }
+
+    @GetMapping("/adminRegisterCustomer")
+    public String getAction(@ModelAttribute("user") User user, Model model) {
+        return "adminRegisterCustomer";
+    }
+
+    @PostMapping("/adminRegisterCustomer")
+    public String postAction(@Valid @ModelAttribute("user") User user, Errors errors, Model model,
+            HttpServletRequest request) {
+
+        ErrorMessage msg = new ErrorMessage();
+        boolean hasError = false;
+
+        if (user.getFirstname().equals("")) {
+            hasError = true;
+            msg.add("First name is required!");
+        }
+        if (user.getLastname().equals("")) {
+            hasError = true;
+            msg.add("Last name is required!");
+        }
+        if (user.getEmail().equals("")) {
+            hasError = true;
+            msg.add("Email is required!");
+        }
+        if (user.getUsername().equals("")) {
+            hasError = true;
+            msg.add("Username is required!");
+        }
+        if (user.getPassword().equals("")) {
+            hasError = true;
+            msg.add("Password is required!");
+        }
+
+        if (hasError) {
+            msg.print();
+            model.addAttribute("message", "Please enter valid information in the boxes!");
+            return "adminRegisterCustomer";
+        } else {
+            user.setRoles("ROLE_USER");
+            userRepository.save(user);
+            return "redirect:main";
+        }
     }
 }

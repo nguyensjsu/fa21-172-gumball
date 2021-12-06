@@ -24,17 +24,13 @@
                  <th>Last Name</th>
              </tr>
          <tbody>
-            <div class="login-container">
-               <a th:href="@{/adminRegisterCustomer}">SIGN UP</a> 
-       </div>
-            <form method="POST"  th:action="@{/main/clear}"><input type="submit" value="Clear All Customers"/></form>
              <tr th:each="customer: ${customers}">
                  <td th:text="${customer.id}">User ID</td>
                  <td th:text="${customer.email}">E-mail</td>
                  <td th:text="${customer.firstname}">First Name</td>
                  <td th:text="${customer.lastname}">Last Name</td>
                   <td>
-                 <form method="POST" th:action="@{/main(id=${customer.id})}" th:object="${customer}"><input type="submit" value="Delete"/></form>
+                 <form th:action="@{/main(id=${customer.id})}"><input type="submit" value="Delete"/></form>
                </td>
              </tr>
          </tbody>
