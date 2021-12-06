@@ -19,7 +19,7 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Grant execute permission for gradlew
-      run: chmod +x /candy-shop/gradlew
+      run: chmod +x candy-shop/gradlew
     - name: Build with Gradle
       run: ./gradlew build
     - name: Build Result
