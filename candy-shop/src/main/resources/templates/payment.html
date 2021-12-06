@@ -33,14 +33,14 @@
                       <b>4</b>
                     </span>
                   </h4>
-                    <form name="form" action="#" method="get">
-                        <p>Sour Patch Kids (<text th:text="${sourPatchKidsCount}"/>, $1/ea)    <span class="price">$<text th:text="${sourPatchKidsCost}"/></span></p>
-                        <p>Hershey (<text th:text="${hersheyCount}"/>, $3/ea)                  <span class="price">$<text th:text="${hersheyCost}"/></span></p>
-                        <p>Nerds (<text th:text="${nerdsCount}"/>, $2/ea)                      <span class="price">$<text th:text="${nerdsCost}"/></span></p>
-                        <p>Skittles (<text th:text="${skittlesCount}"/>, $4/ea)                <span class="price">$<text th:text="${skittlesCost}"/></span></p>
+                    <form name="form" action="#" method="get" th:object="${catalog}">
+                        <p>Sour Patch Kids (<text name="sourPatchKidsCount" th:text="${sourPatchKidsCount}"/>, $1/ea)       <span class="price">$<text th:text="${sourPatchKidsCost}"/></span></p>
+                        <p>Hershey (<text name="hersheyCount" th:text="${hersheyCount}"/>, $3/ea)                           <span class="price">$<text th:text="${hersheyCost}"/></span></p>
+                        <p>Nerds (<text name="nerdsCount" th:text="${nerdsCount}"/>, $2/ea)                                 <span class="price">$<text th:text="${nerdsCost}"/></span></p>
+                        <p>Skittles (<text name="skittlesCount" th:text="${skittlesCount}"/>, $4/ea)                        <span class="price">$<text th:text="${skittlesCost}"/></span></p>
                     </form>
                     <hr>
-                    <p>Total <span class="price" style="color:black"><b>$<text th:text="${totalCost}"/></b></span></p>
+                    <p>Total <span class="price" style="color:black"><b>$<text name="totalCost" th:text="${totalCost}"/></b></span></p>
                 </div>
               </div>
             </div>

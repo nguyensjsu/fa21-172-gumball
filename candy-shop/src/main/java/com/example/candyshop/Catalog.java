@@ -14,10 +14,10 @@ public class Catalog {
 
     private @Id @GeneratedValue Long id;
 
-    private String sourPatchKids;
-    private String hershey;
-    private String nerds;
-    private String skittles;
+    private String sourPatchKids = "0";
+    private String hershey = "0";
+    private String nerds = "0";
+    private String skittles = "0";
 
     public String sourPatchKids() { return sourPatchKids; }
     public String hershey() { return hershey; }

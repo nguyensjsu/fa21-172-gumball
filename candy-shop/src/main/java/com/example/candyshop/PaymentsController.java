@@ -24,8 +24,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.validation.BindingResult;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,19 @@ import org.springframework.beans.factory.annotation.Value;
 
 @Slf4j
 @Controller
+@SessionAttributes(
+    {
+        "sourPatchKidsCount", 
+        "hersheyCount", 
+        "nerdsCount", 
+        "skittlesCount", 
+        "sourPatchKidsCost",
+        "hersheyCost",
+        "nerdsCost",
+        "skittlesCost",
+        "totalCost"
+    }
+)
 @RequestMapping("/payment")
 public class PaymentsController {  
 
@@ -121,7 +136,7 @@ public class PaymentsController {
     }
 
     @Autowired
-    private PaymentsCommandRepository repository;
+    private PaymentsCommandRepository paymentRepo;
 
     @Getter
     @Setter
@@ -143,9 +158,7 @@ public class PaymentsController {
 
 
     @GetMapping
-    public String getAction( @ModelAttribute("command") PaymentsCommand command, 
-                            Model model) {
-
+    public String getAction( @ModelAttribute("command") PaymentsCommand command, Model model) {
         return "payment" ;
 
     }
@@ -153,6 +166,7 @@ public class PaymentsController {
     @PostMapping
     public String postAction(@Valid @ModelAttribute("command") PaymentsCommand command,  
                             @RequestParam(value="action", required=true) String action,
+                            @ModelAttribute("totalCost") final String totalCost,
                             Errors errors, Model model, HttpServletRequest request) {
     
         log.info( "Action: " + action ) ;
@@ -184,10 +198,10 @@ public class PaymentsController {
 
         // regex validations
         if ( !command.zip().matches("\\d{5}") )                             { hasErrors = true; msgs.add("Invalid Zip Code: " + command.zip()); }
-        if ( !command.phone().matches("[(]\\d{3}[)] \\d{3}-\\d{4}") )       { hasErrors = true; msgs.add("Invalid Phone Number: " + command.zip()); }
-        if ( !command.cardnum().matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}") )    { hasErrors = true; msgs.add("Invalid Card Number: " + command.zip()); }
-        if ( !command.cardexpyear().matches("\\d{4}") )                     { hasErrors = true; msgs.add("Invalid Card Expiration Year: " + command.zip()); }
-        if ( !command.cardcvv().matches("\\d{3}") )                         { hasErrors = true; msgs.add("Invalid Card CVV: " + command.zip()); }
+        if ( !command.phone().matches("[(]\\d{3}[)] \\d{3}-\\d{4}") )       { hasErrors = true; msgs.add("Invalid Phone Number: " + command.phone()); }
+        if ( !command.cardnum().matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}") )    { hasErrors = true; msgs.add("Invalid Card Number: " + command.cardnum()); }
+        if ( !command.cardexpyear().matches("\\d{4}") )                     { hasErrors = true; msgs.add("Invalid Card Expiration Year: " + command.cardexpyear()); }
+        if ( !command.cardcvv().matches("\\d{3}") )                         { hasErrors = true; msgs.add("Invalid Card CVV: " + command.cardcvv()); }
         
         // validate months of the year
         if( months.get( command.cardexpmon()) == null ) { hasErrors = true; msgs.add( "Invalid Card Expiration Month: " + command.cardexpmon()); }
@@ -216,7 +230,7 @@ public class PaymentsController {
         auth.billToZipCode = command.zip(); 
         auth.billToPhone = command.phone();
         auth.billToEmail = command.email();
-        auth.transactionAmount = "30.00";
+        auth.transactionAmount = totalCost + ".00";
         auth.transactionCurrency = "USD";
         auth.cardNumnber = command.cardnum();
         auth.cardExpMonth = months.get(command.cardexpmon());
@@ -246,7 +260,7 @@ public class PaymentsController {
         if ( authValid ) {
             capture.reference = order_num;
             capture.paymentId = authResponse.id;
-            capture.transactionAmount = "30.00";
+            capture.transactionAmount = totalCost + ".00";
             capture.transactionCurrency = "USD";
             System.out.println("\n\nCapture Request: " + capture.toJson());
             captureResponse = api.capture(capture);
@@ -263,7 +277,7 @@ public class PaymentsController {
         /* Render View */
         if ( authValid && captureValid ) {
             command.setOrderNumber( order_num );
-            command.setTransactionAmount( "30.00" );
+            command.setTransactionAmount( totalCost + ".00" );
             command.setTransactionCurrency( "USD" );
             command.setAuthId( authResponse.id );
             command.setAuthStatus( authResponse.status );
@@ -273,7 +287,7 @@ public class PaymentsController {
 
         System.out.println( "Thank You for Your Payment! Your Order Number is: " + order_num );
         model.addAttribute( "message", "Thank You for Your Payment! Your Order Number is: " + order_num ) ;
-     
+        paymentRepo.save(command);
 
         return "payment";
     }

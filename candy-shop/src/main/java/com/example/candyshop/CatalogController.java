@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -31,25 +30,20 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/catalog")
 public class CatalogController {
 
-    @Data
-    class Message{
-        private String message;
-        public Message(String m) {
-            message = m;
-        }
+    @Getter
+    @Setter
+    class Message {
+        private String msg;
+        public Message(String m) { msg = m; }
     }
 
-    class ErrorMessage {
+    class ErrorMessages {
         private ArrayList<Message> messages = new ArrayList<Message>();
-        public void add(String m){
-            messages.add(new Message(m));
-        }
-        public ArrayList<Message> getMessages(){
-            return messages;
-        }
-        public void print(){
-            for(Message msg:messages){
-                System.out.print(msg.message);
+        public void add(String msg) { messages.add(new Message(msg)); }
+        public ArrayList<Message> getMessages() { return messages; }
+        public void print() {
+            for(Message m : messages) {
+                System.out.println( m.msg );
             }
         }
     }
@@ -64,26 +58,30 @@ public class CatalogController {
     
     @PostMapping
     public String postAction(@Valid @ModelAttribute("catalog") Catalog catalog, Errors errors, Model model, RedirectAttributes redirectAttrs) {
-        ErrorMessage msg = new ErrorMessage();
+        ErrorMessages msgs = new ErrorMessages();
 
         // Ensure that inputs only recieve numbers
         if (!catalog.sourPatchKids().matches("[0-9]+")) {
-            msg.add("Sour Patch Kids - Invalid Input");
+            msgs.add("Sour Patch Kids - Invalid Input");
         }
         if (!catalog.hershey().matches("[0-9]+")) {
-            msg.add("Hershey - Invalid Input");
+            msgs.add("Hershey - Invalid Input");
         }
         if (!catalog.nerds().matches("[0-9]+")) {
-            msg.add("Nerds - Invalid Input");
+            msgs.add("Nerds - Invalid Input");
         }
         if (!catalog.skittles().matches("[0-9]+")) {
-            msg.add("Skittles - Invalid Input");
+            msgs.add("Skittles - Invalid Input");
+        }
+        // If no items are added do not move to the payment page
+        if (catalog.sourPatchKids().equals("0") && catalog.hershey().equals("0") && catalog.nerds().equals("0") && catalog.skittles().equals("0")) {
+            msgs.add("No candies were added!");
         }
 
         // If error is found do not redirect to payment
-        if (msg.messages.size() > 0) {
-            msg.print();
-    		model.addAttribute("message", "Please enter valid information in the boxes!");
+        if (msgs.messages.size() > 0) {
+            msgs.print();
+    		model.addAttribute("messages", msgs.getMessages());
             return "catalog";
         }
 
