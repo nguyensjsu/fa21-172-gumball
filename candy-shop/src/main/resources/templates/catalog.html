@@ -18,36 +18,67 @@
         </ul>
     </div>
 
-<div class="candy"><br>
-    <div class="CandyforSale"> 
-     	<img src="../static/images/sourpatch.png" style="widows:  100px;height: 200px;"th:src="@{/images/sourpatch.png}"/>
-        <figcaption class="caption">Sour Patch Kids</figcaption>
-    </div>
-    <div class="CandyforSale">
-        <img src="../static/images/herseys.png" style="widows:  100px;height: 200px;"th:src="@{/images/herseys.png}"/><br>
-        <figcaption class="caption">XL Herseys Chocolate Bar</figcaption> 
-    </div>
-    <div class="CandyforSale">
-       	<img src="../static/images/nerds.png" style="widows:  100px;height: 200px;"th:src="@{/images/nerds.png}"/><br>
-		<figcaption class="caption">Nerds Rainbow</figcaption>
-    </div>
-    <div class="CandyforSale">
-        <img src="../static/images/skittles.png" style="widows:  100px;height: 200px;"th:src="@{/images/skittles.png}"/><br>
-    	<figcaption class="caption">Skittles Large Bag</figcaption>
-    </div>
+    <form th:action="@{/catalog}" method="post" th:object="${catalog}">
+        <div class="candy"><br>
+            <div class="CandyforSale"> 
+                <img src="../static/images/sourpatch.png" style="widows:  100px;height: 200px;"th:src="@{/images/sourpatch.png}"/>
+                <figcaption class="caption">Sour Patch Kids</figcaption>
+                <p>$1 each</p>
+                <label for="sour-patch-kids">
+                    Count: <input id="sour-patch-kids" maxlength="2" name="sour-patch-kids" th:field="*{sourPatchKids}"/>
+                </label>
+            </div>
+            <div class="CandyforSale">
+                <img src="../static/images/herseys.png" style="widows:  100px;height: 200px;"th:src="@{/images/herseys.png}"/><br>
+                <figcaption class="caption">XL Herseys Chocolate Bar</figcaption> 
+                <p>$3 each</p>
+                <label for="sour-patch-kids">
+                    Count: <input id="hersey" maxlength="2" name="hersey" th:field="*{hershey}"/>
+                </label>
+            </div>
+            <div class="CandyforSale">
+                <img src="../static/images/nerds.png" style="widows:  100px;height: 200px;"th:src="@{/images/nerds.png}"/><br>
+                <figcaption class="caption">Nerds Rainbow</figcaption>
+                <p>$2 each</p>
+                <label for="nerds">
+                    Count: <input id="nerds" maxlength="2" name="nerds" th:field="*{nerds}"/>
+                </label>
+            </div>
+            <div class="CandyforSale">
+                <img src="../static/images/skittles.png" style="widows:  100px;height: 200px;"th:src="@{/images/skittles.png}"/><br>
+                <figcaption class="caption">Skittles Large Bag</figcaption>
+                <p>$4 each</p>
+                <label for="skittles">
+                    Count: <input id="skittles" maxlength="2" name="skittles" th:field="*{skittles}"/>
+                </label>
+            </div>
+        </div>
+
+        <br />
+        
+        <div id="outerCenterHoriz">
+            <Button id="centerHoriztonally" type="submit">CHECKOUT</Button>
+        </div>
+    </form>
 
     <br><br>
-<hr style="width:auto">
+    <hr style="width:auto">
 
-<div class="footer">
-    <ul>
-        <li><a  th:href="@{/}">ABOUT US</a></li>
-        <li><a  th:href="@{/}">HELP</a></li>
-        <li style="float:right"><a>CMPE 172 Team Gumball</a></li>
-    </ul>
-</div>
+    <div id="outerCenterHoriz" th:if="${not#lists.isEmpty(messages)}">
+        <h3 id="centerHoriztonally" style="color: red;">ERROR</h3>
+        <div class="bulletpoint" id="centerHoriztonally">
+            <ul th:each="m : ${messages}" style="background-color: transparent;">
+                <li th:text="${m.msg}"/>
+            </ul>
+        </div>
+    </div>
 
-
-</div>
+    <div class="footer">
+        <ul>
+            <li><a  th:href="@{/}">ABOUT US</a></li>
+            <li><a  th:href="@{/}">HELP</a></li>
+            <li style="float:right"><a>CMPE 172 Team Gumball</a></li>
+        </ul>
+    </div>
 </body>
 </html>
