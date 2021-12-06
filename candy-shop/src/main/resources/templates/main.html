@@ -16,8 +16,6 @@
          }
       </style>
 
-      <p th:text="'customer: ' + ${firstname} + ' ' + ${lastname}+'!'" />
-
       <table style="width:100%">
              <tr>
                  <th>User ID</th>
@@ -26,16 +24,18 @@
                  <th>Last Name</th>
              </tr>
          <tbody>
-             <tr th:each="user: ${user}">
-                 <td th:text="${user.id}">User ID</td>
-                 <td th:text="${user.email}">E-mail</td>
-                 <td th:text="${user.firstname}">First Name</td>
-                 <td th:text="${user.lastname}">Last Name</td>
+            <a th:href="@{/clear}" class="btn btn-danger ml-2">Clear All Customers</a>
+             <tr th:each="customer: ${customers}">
+                 <td th:text="${customer.id}">User ID</td>
+                 <td th:text="${customer.email}">E-mail</td>
+                 <td th:text="${customer.firstname}">First Name</td>
+                 <td th:text="${customer.lastname}">Last Name</td>
+                  <td>
+                 <form method="get" th:action="@{/main(id=${customer.id})}"><input type="submit" value="Delete"/></form>
+               </td>
              </tr>
          </tbody>
      </table>
-
-      <button type="button" th:href="@{/search}" th:onclick="|window.location.href='/search'|">Search with known ID</button> 
    </body>
 	
 </html>

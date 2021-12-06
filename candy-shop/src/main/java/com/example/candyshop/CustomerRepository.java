@@ -17,4 +17,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     // User findByCustomerEmail(String email);
     // @Query("SELECT * FROM Users")
     // public User findByEmail(String email);
+    // long deleteById(String id);
+
 }

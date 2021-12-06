@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 @Controller
-@RequestMapping(path = "/main")
+@RequestMapping("/main")
 public class CustomerController {
 
     @Autowired
@@ -59,47 +59,20 @@ public class CustomerController {
 
     @GetMapping
     public String home(Model model) {
-        model.addAttribute("customer", new Customer());
+        System.out.println("testing1");
+        model.addAttribute("customers", customerRepository.findAll());
         return "main";
     }
 
-    @GetMapping("/search")
-    public String search(Model model) {
-        System.out.println("Search Success");
-        model.addAttribute("customer", new Customer());
-        return "search";
-    }
-
-    @PostMapping("/search")
-    public String search(@ModelAttribute Customer customer, Model model) {
-        System.out.println("customerID: " + customer.getCustomerEmail());
-        Iterable<Customer> customers = customerRepository.findAll();
-        Customer found = new Customer();
-        for (Customer c : customers) {
-            if (c.getCustomerEmail().equals(customer.getCustomerEmail()))
-                found = c;
-        }
-
-        if (found.getCustomerEmail() == null || found.getCustomerEmail().isBlank()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Customer not found!");
-        } else {
-            model.addAttribute("customer", customer);
-            model.addAttribute("firstname", found.getFirstName());
-            model.addAttribute("lastname", found.getLastName());
-        }
-        return "backoffice";
-    }
-
-    @RequestMapping(value = "/customers")
-    public String getAllCustomers(Model model) {
-        Iterable<Customer> customers = customerRepository.findAll();
-        model.addAttribute("customers", customers);
-        System.out.println("Success");
-        return "search_result";
+    @GetMapping("/main")
+    public String deleteCustomer(@RequestParam Long id) {
+        System.out.println("testing2");
+        customerRepository.deleteById(id);
+        return "main";
     }
 
     @DeleteMapping(path = "/clear")
-    public String clearAllCustomer() {
+    public String clearAllCustomers() {
         customerRepository.deleteAll();
         return "main";
     }

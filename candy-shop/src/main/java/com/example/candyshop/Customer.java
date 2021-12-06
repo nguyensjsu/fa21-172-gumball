@@ -21,6 +21,30 @@ public class Customer {
     private String password;
     private String roles;
 
+    public String firstname() {
+        return firstname;
+    }
+
+    public String lastname() {
+        return lastname;
+    }
+
+    public String email() {
+        return email;
+    }
+
+    public String username() {
+        return username;
+    }
+
+    public String password() {
+        return password;
+    }
+
+    public String roles() {
+        return roles;
+    }
+
     public String getFirstName() {
         return this.firstname;
     }
@@ -44,46 +68,5 @@ public class Customer {
     public void setCustomerEmail(String email) {
         this.email = email;
     }
+
 }
-
-// package com.example.candyshop;
-
-// import lombok.*;
-// import javax.persistence.*;
-
-// import javax.persistence.Entity;
-// import javax.persistence.GeneratedValue;
-// import javax.persistence.Id;
-// import javax.persistence.GenerationType;
-// import javax.persistence.Table;
-// import javax.persistence.Index;
-// import javax.persistence.Column;
-
-// @Entity
-// @Table(name = "Users") // can I use the same table?
-// @Data
-// @RequiredArgsConstructor
-// public class Customer {
-
-// @Id
-// @GeneratedValue(strategy = GenerationType.AUTO)
-// private Long id;
-
-// private String firstname, lastname;
-
-// public String getFirstName() {
-// return this.firstname;
-// }
-
-// public String getLastName() {
-// return this.lastname;
-// }
-
-// public void setFirstName(String firstName) {
-// this.firstname = firstName;
-// }
-
-// public void setLastName(String lastname) {
-// this.lastname = lastname;
-// }
-// }
