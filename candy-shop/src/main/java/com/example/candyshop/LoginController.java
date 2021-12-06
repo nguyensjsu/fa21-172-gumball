@@ -38,27 +38,27 @@ public class LoginController {
 	private UserRepository userRepo;
 
 	@Data
-    	class Message{
-        	private String message;
-        	public Message(String m) {
-            	message = m;
-        	}
-    	}
+	class Message{
+		private String message;
+		public Message(String m) {
+			message = m;
+		}
+	}
 
-    	class ErrorMessage{
-        	private ArrayList<Message> messages = new ArrayList<Message>();
-        	public void add(String m){
-            	messages.add(new Message(m));
-        	}
-       		public ArrayList<Message> getMessages(){
-            	return messages;
-        	}
-        	public void print(){
-            	for(Message msg:messages){
-                	System.out.print(msg.message);
-            	}
-        	}
-    	}
+	class ErrorMessage{
+		private ArrayList<Message> messages = new ArrayList<Message>();
+		public void add(String m){
+			messages.add(new Message(m));
+		}
+		public ArrayList<Message> getMessages(){
+			return messages;
+		}
+		public void print(){
+			for(Message msg:messages){
+				System.out.print(msg.message);
+			}
+		}
+	}
 
 
 	@GetMapping("/login")

@@ -8,6 +8,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackageClasses = UserRepository.class)
 public class CandyShopApplication {
 
+	/**
+	 * @Bean
+	 * public RestTemplate getRestTemplate(){
+	 * 	return new RestTemplate();
+	 * }
+	 */
+
 	public static void main(String[] args) {
 		SpringApplication.run(CandyShopApplication.class, args);
 	}
