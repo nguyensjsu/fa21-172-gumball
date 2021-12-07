@@ -138,11 +138,17 @@ This is the products page for our Candy Shop application.
 
 This is the checkout page for our Candy Shop application.
 
-![steps](Step5.png)
+![steps](images/cameron/cl-paymentDataShow.png)
 
 This is the confirmation that the payment went to cybersource.
 
-![steps](PaymentsSuccessful.png)
+![steps](images/cameron/cl-paymentsFilled.png)
+
+These are two pictures to confirm CyberSource.
+
+![steps](images/cameron/cl-cybersource1.png)
+
+![steps](images/cameron/cl-cybersource2.png)
 
 This is the rabbits queue after a successful payments
 
