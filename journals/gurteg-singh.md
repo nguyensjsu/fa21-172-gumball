@@ -13,9 +13,28 @@
    - Again, since this was just a meeting, there were no challenges this week, besides trying to find a meeting time that worked for everyone due to the upcoming thanksgiving holidays and midterms happening before break.
 
 Journal Entry 3 (Week 3: 11/22 - 11/29)
-  - This week, I was able to get a working registration login form that also sent the data from the form to the mysql database. I decided to make a couple of html pages along the way, like homepage and a welcome page, and added the css and styling to make it look nice. I connected mysql to the app with JDBC and made the user class an entity for the database to recorgnize and immediately make into a table in cmpe172 database. I tried to make a login page that would authenticate with the data in mysql, but I was unable to do so. I ended up pushing what I had, and passed the login onto Christian who ended up making it work with spring securtity. 
+  - This week, I was able to get a working registration login form that also sent the data from the form to the mysql database. I decided to make a couple of html pages along the way, like homepage and a welcome page, and added the css and styling to make it look nice. I connected mysql to the app with JDBC and made the user class an entity for the database to recorgnize and immediately make into a table in cmpe172 database. I tried to make a basic login page that would authenticate with the data in mysql, but I was unable to do so. I ended up pushing what I had, and passed the login onto Christian who ended up making it work with spring securtity. 
   
   ### Challenges
    - The biggest challenge for this week was trying to access the user data from mysql database for authentication for login. I tried to find multiple ways to access the data using things like adding a get method for passwords in the user repoisotry, but nothing worked. The problem was solved after I decided to commit what I had and a teammate picked up the issue and solved it using spring security.   
 
-    
+
+  ### Commits
+   - https://github.com/nguyensjsu/fa21-172-gumball/tree/49674b061933e762e71ed1ce4df5d4095ee9beeb
+   - https://github.com/nguyensjsu/fa21-172-gumball/tree/04f518f40c7b0aa329bd6ced3813fd7c8006d8cb
+   - https://github.com/nguyensjsu/fa21-172-gumball/tree/2b65712bbeb2175eabd7f292ff466e822376004d
+
+![Cards](https://github.com/nguyensjsu/fa21-172-gumball/blob/main/images/gurteg/Nov28_Cards.png "Cards")
+![Basic Login](https://github.com/nguyensjsu/fa21-172-gumball/blob/main/images/gurteg/Nov28_BasicLogin.png "Basic Login")
+![HomePage](https://github.com/nguyensjsu/fa21-172-gumball/blob/main/images/gurteg/Nov28_HomePage.png "HomePage")
+
+![]( "")
+![]( "")
+![]( "")
+
+
+
+
+
+
+   
