@@ -14,35 +14,49 @@ Four seniors got together to build this candy shop from ground up. We put in our
 
 ### Docker
 
-Start up Docker Desktop and have the mysql container running.
+Start up Docker Desktop and have the MySql container running.
 
-### mySQL
+### MySQL
 
 On terminal, run the following commands.
 
-The mysql username = admin
-and password = welcome
-the database = cmpe172
-the table = users
+- The mysql username = admin
+- the password = welcome
+- the database = cmpe172
+- the table = users
 
-```
+```bash
 $ docker exec -it mysql bash
+```
 
+```bash
 /# mysql --password
 Enter password:
+```
 
-create database cmpe172;
+```bash
+  create database cmpe172;
+```
 
-USE cmpe172
+```bash
+  USE cmpe172;
+```
 
-create user 'admin'@'%' identified by 'welcome';
+```bash
+  create user 'admin'@'%' identified by 'welcome';
+```
 
-select * from users;
+```bash
+  grant all on cmpe172.* to 'admin'@'%';
+```
+
+```bash
+  select * from users;
 ```
 
 For our admin login to the candy shop, we need to insert an ADMIN_ROLE into the mySQL Database. To do this run the following command in the mysql shell.
 
-```
+```bash
 INSERT INTO users(id, email, firstname, lastname, password, roles, username) VALUES(1, 'admin@email.com','admin','admin','admin','ROLE_ADMIN','admin');
 ```
 
@@ -52,12 +66,16 @@ To access the Mongo Database, download MongoDB Compass.
 
 To get started with MongoDB, run the following commands on your terminal.
 
+```bash
+  sudo pip3 install mysql-connector
 ```
-sudo pip3 install mysql-connector
 
-sudo pip3 install mysql-connector-python
+```bash
+  sudo pip3 install mysql-connector-python
+```
 
-sudo pip3 install pymongo
+```bash
+  sudo pip3 install pymongo
 ```
 
 ## Diagrams/Images
