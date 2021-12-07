@@ -42,9 +42,11 @@ Journal Entry 4 (Week 4: 11/29 - 12/6)
    - https://github.com/nguyensjsu/fa21-172-gumball/commit/e1716a8ae14358bbc78450c33966d7e8995717ed
 
 
+
 ![DEC5Cards](https://github.com/nguyensjsu/fa21-172-gumball/blob/main/images/gurteg/Dec5_Cards.png "Cards")
 ![GCPMYSQL](https://github.com/nguyensjsu/fa21-172-gumball/blob/main/images/gurteg/Dec5_GCPMYSQL.png "GCPMYSQL")
 ![WORKBENCH-SQL](https://github.com/nguyensjsu/fa21-172-gumball/blob/main/images/gurteg/Dec5_GCPMYSQLWorkBench.png "WORKBENCH")
+![KONG-INVALID](https://github.com/nguyensjsu/fa21-172-gumball/blob/main/images/gurteg/Dec5_KongInvalidAuth.png "KONG")
 ![DEC6CARDS](https://github.com/nguyensjsu/fa21-172-gumball/blob/main/images/gurteg/Dec6_Cards.png "Dec6Cards")
 
 
