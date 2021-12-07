@@ -142,7 +142,7 @@ This is the checkout page for our Candy Shop application.
 
 This is the confirmation that the payment went to cybersource.
 
-![steps](images/cameron/cl-paymentsFilled.png)
+![steps](images/cameron/cl-paymentFilled.png)
 
 These are two pictures to confirm CyberSource.
 
