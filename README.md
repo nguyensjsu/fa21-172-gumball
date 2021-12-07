@@ -12,6 +12,40 @@ Four seniors got together to build this candy shop from ground up. We put in our
 
 ## Setup for our Candy Shop Application
 
+### Docker
+
+Start up Docker Desktop and have the mysql container running.
+
+### mySQL
+
+On terminal run the following commands.
+
+The mysql username = admin
+and password = welcome
+the database = cmpe172
+the table = users
+
+```
+$ docker exec -it mysql bash
+
+/# mysql --password
+Enter password:
+
+create database cmpe172;
+
+USE cmpe172
+
+create user 'admin'@'%' identified by 'welcome';
+
+select * from users;
+```
+
+For our admin login to the candy shop, we need to insert an ADMIN_ROLE into the mySQL Database. To do this run the following command in the mysql shell.
+
+```
+INSERT INTO users(id, email, firstname, lastname, password, roles, username) VALUES(1, 'admin@email.com','admin','admin','admin','ROLE_ADMIN','admin');
+```
+
 ## Diagrams/Images
 
 ![proj](architecture.png)
