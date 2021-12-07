@@ -29,7 +29,7 @@ Journal Entry 3 (Week 3: 11/22 - 11/29)
 ![HomePage](https://github.com/nguyensjsu/fa21-172-gumball/blob/main/images/gurteg/Nov28_HomePage.png "HomePage")
 
 
-Journal Entry 4 (Week 4: 11/29 - 12/6)
+## Journal Entry 4 (Week 4: 11/29 - 12/6)
   - This week, there was a lot to do as we were in the final week before project was due and there was a lot to be done. After making a basic login, I added and edited some code to make the registration pages better and redirect to the proper pages. I tried to initially do a kong setup with the db-less mode but the api kept giving me an "Invalid Authentication Credentials" message. I was unable to solve this and had to move on to other parts of the project as we did not have the time to stay on it longer and passed it to a teammate who took a try. Following this, I decided to try to set up a gradle action workflow, but was unable to get that working due to some errors. After this, I worked on trying to deploy to GKE and getting a working instance with GCP MYSQL. While I was eventually able to get a public instance working with our app running locally, I was unable to deploy our app to GKE because my pod kept crashing and restarting. Eventually, I had to withdraw from this and get the project ready for the demo presentation for the final class session without deploying to GKE.
   
   ### Challenges
