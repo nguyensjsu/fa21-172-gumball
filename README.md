@@ -118,6 +118,36 @@ To get started with MongoDB, run the following commands on your terminal.
 - We explored other GCP features and services like Cloud SQL
 - We explored using MongoDB in our project.
 
+## Demo/Screenshots
+
+This is the landing page for our Candy Shop application.
+
+![steps](Step1.png)
+
+This is the sign up page for our Candy Shop application.
+
+![steps](Step2.png)
+
+This is the login page for our Candy Shop application.
+
+![steps](Step3.png)
+
+This is the products page for our Candy Shop application.
+
+![steps](Step4.png)
+
+This is the checkout page for our Candy Shop application.
+
+![steps](Step5.png)
+
+This is the specific admin login for our Candy Shop application.
+
+![steps](Step6.png)
+
+This is the back office page that shows the customer database for our Candy Shop application.
+
+![steps](Step7.png)
+
 ## Team Journal
 
 ### Journal Entry 1 (Week 1: 11/08 - 11/15)
