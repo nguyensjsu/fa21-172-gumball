@@ -140,6 +140,14 @@ This is the checkout page for our Candy Shop application.
 
 ![steps](Step5.png)
 
+This is the confirmation that the payment went to cybersource.
+
+![steps](PaymentsSuccessful.png)
+
+This is the rabbits queue after a successful payments
+
+![steps](Rabbits.png)
+
 This is the specific admin login for our Candy Shop application.
 
 ![steps](Step6.png)
