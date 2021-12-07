@@ -7,5 +7,10 @@
    - There were no challenges this week, as we mostly just met to get an idea of what to do for our project.
    
 ## Journal Entry 2 (Week 2: 11/15 - 11/22)
-  -The team decided to meet again and share our progress on researching ways to implement the various functions   
+  -The team decided to meet again and share our progress on researching ways to implement the various functions. We decided it was time to start implementing and distributed work to those who felt most comfortable with a topic. I decided to go ahead and try to implement a working user registation and login page and have the data stored in a local mysql container. 
+  
+  ### Challenges
+    -Again, since this was just another meeting, there were no challenges besides trying to find a meeting time that worked for everyone due to the upcoming thanksgiving holiday.
+    
+
     
