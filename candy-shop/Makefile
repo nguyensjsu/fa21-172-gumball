@@ -24,6 +24,9 @@ run: jar
 restart: recomp
 	gradle bootRun
 
+admin: recomp
+	python3 sql2mongo.py
+	gradle bootRun
 
 # Docker
 
