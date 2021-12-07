@@ -16,6 +16,10 @@ Four seniors got together to build this candy shop from ground up. We put in our
 
 Start up Docker Desktop and have the MySql container running.
 
+```bash
+docker run -d --name mysql -td -p 3306:3306 -e MYSQL_ROOT_PASSWORD=welcome mysql:8.0
+```
+
 ### MySQL
 
 On terminal, run the following commands.
