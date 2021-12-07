@@ -39,23 +39,23 @@ Enter password:
 ```
 
 ```bash
-  create database cmpe172;
+create database cmpe172;
 ```
 
 ```bash
-  USE cmpe172;
+USE cmpe172;
 ```
 
 ```bash
-  create user 'admin'@'%' identified by 'welcome';
+create user 'admin'@'%' identified by 'welcome';
 ```
 
 ```bash
-  grant all on cmpe172.* to 'admin'@'%';
+grant all on cmpe172.* to 'admin'@'%';
 ```
 
 ```bash
-  select * from users;
+select * from users;
 ```
 
 For our admin login to the candy shop, we need to insert an ADMIN_ROLE into the mySQL Database. To do this run the following command in the mysql shell.
@@ -71,15 +71,15 @@ To access the Mongo Database, download MongoDB Compass.
 To get started with MongoDB, run the following commands on your terminal.
 
 ```bash
-  sudo pip3 install mysql-connector
+sudo pip3 install mysql-connector
 ```
 
 ```bash
-  sudo pip3 install mysql-connector-python
+sudo pip3 install mysql-connector-python
 ```
 
 ```bash
-  sudo pip3 install pymongo
+sudo pip3 install pymongo
 ```
 
 ## Diagrams/Images
@@ -120,45 +120,45 @@ To get started with MongoDB, run the following commands on your terminal.
 
 ## Demo/Screenshots
 
-This is the landing page for our Candy Shop application.
+This is the **landing** page for our Candy Shop application.
 
 ![steps](Step1.png)
 
-This is the sign up page for our Candy Shop application.
+This is the **sign up** page for our Candy Shop application.
 
 ![steps](Step2.png)
 
-This is the login page for our Candy Shop application.
+This is the **login** page for our Candy Shop application.
 
 ![steps](Step3.png)
 
-This is the products page for our Candy Shop application.
+This is the **products** page for our Candy Shop application.
 
 ![steps](Step4.png)
 
-This is the checkout page for our Candy Shop application.
+This is the **checkout** page for our Candy Shop application.
 
 ![steps](images/cameron/cl-paymentDataShow.png)
 
-This is the confirmation that the payment went to cybersource.
+This is the **confirmation** that the payment went to cybersource.
 
 ![steps](images/cameron/cl-paymentFilled.png)
 
-These are two pictures to confirm CyberSource.
+These are two pictures to **confirm CyberSource**.
 
 ![steps](images/cameron/cl-cybersource1.png)
 
 ![steps](images/cameron/cl-cybersource2.png)
 
-This is the rabbits queue after a successful payments
+This is the **rabbits queue** after a successful payments.
 
 ![steps](Rabbits.png)
 
-This is the specific admin login for our Candy Shop application.
+This is the specific **admin login** for our Candy Shop application.
 
 ![steps](Step6.png)
 
-This is the back office page that shows the customer database for our Candy Shop application.
+This is the **back office** page that shows the customer database for our Candy Shop application.
 
 ![steps](Step7.png)
 
