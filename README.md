@@ -18,7 +18,7 @@ Start up Docker Desktop and have the mysql container running.
 
 ### mySQL
 
-On terminal run the following commands.
+On terminal, run the following commands.
 
 The mysql username = admin
 and password = welcome
@@ -44,6 +44,20 @@ For our admin login to the candy shop, we need to insert an ADMIN_ROLE into the 
 
 ```
 INSERT INTO users(id, email, firstname, lastname, password, roles, username) VALUES(1, 'admin@email.com','admin','admin','admin','ROLE_ADMIN','admin');
+```
+
+### MongoDB
+
+To access the Mongo Database, download MongoDB Compass.
+
+To get started with MongoDB, run the following commands on your terminal.
+
+```
+sudo pip3 install mysql-connector
+
+sudo pip3 install mysql-connector-python
+
+sudo pip3 install pymongo
 ```
 
 ## Diagrams/Images
