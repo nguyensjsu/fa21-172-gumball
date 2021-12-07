@@ -23,6 +23,8 @@
 
 ![Login Page](../images/christian/loginpage.png)
 
+![Login Page](../images/christian/KanbanProgress.png)
+
 ## Week 4
 
 - Created the docker-compose to create container with mysql, springapp, and load balancer
@@ -33,3 +35,22 @@
 - Split cyper payments, backoffice, and front end parts
 
 Create RestControllers in the microservices; however couldn't get anything to connect.
+
+![Login Page](../images/christian/KanbanDone1.png)
+
+![Login Page](../images/christian/Progress2.png)
+
+![Login Page](../images/christian/progress3.png)
+
+![Login Page](../images/christian/progress4.png)
+
+https://github.com/nguyensjsu/fa21-172-gumball/commit/5e5a6bd9d0463a0c6a7c4ee9ba20c4a6b0911455
+
+https://github.com/nguyensjsu/fa21-172-gumball/commit/249127d68aa4e066afce04ef0d6217cdf211407d
+
+https://github.com/nguyensjsu/fa21-172-gumball/commit/44ff8618e12ecff8fa9bd2574de63d14bf922e00
+
+https://github.com/nguyensjsu/fa21-172-gumball/commit/4ab3529e9655e93b069c2930dba99b445e69c2bc
+
+https://github.com/nguyensjsu/fa21-172-gumball/commit/57542251800f6ccd6e44547002cef05ac19e38db
+
