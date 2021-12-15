@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: candy-shop-deployment
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      name: candy-shop
+  replicas: 4 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      # unlike pod.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        name: candy-shop
+    spec:
+      containers:
+      - name: candy-shop
+        image: christianksoh/candy-shop
+        env:
+          - name: MYSQL_HOST
+            value: "10.28.96.5"
+          - name: RABBIT_HOST
+            value: rabbitmq-service
+        ports:
+        - containerPort: 8080
+
