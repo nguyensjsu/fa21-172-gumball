@@ -1,0 +1,10 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "candy-shop-ingress"
+  namespace: "default"
+spec:
+  backend:
+    serviceName: "candy-shop-service"
+    servicePort: 8080
+

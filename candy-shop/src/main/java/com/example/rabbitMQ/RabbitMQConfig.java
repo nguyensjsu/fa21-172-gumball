@@ -8,15 +8,27 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
 
+    @Value("${spring.rabbitmq.host}") private String rabbitmq ;
+    @Bean
+    public RabbitMqReceiver receiver() {
+        return new RabbitMqReceiver();
+    }
+
+    @Bean
+    public RabbitMqSender sender() {
+        return new RabbitMqSender();
+    }
+
     @Bean
     public CachingConnectionFactory connectionFactory() {
-        return new CachingConnectionFactory("localhost");
+        return new CachingConnectionFactory(rabbitmq);
     }
 
     @Bean
@@ -26,7 +38,8 @@ public class RabbitMQConfig {
 
     @Bean
     public RabbitTemplate rabbitTemplate() {
-        return new RabbitTemplate(connectionFactory());
+        return new RabbitTemplate();
+        //return new RabbitTemplate(connectionFactory());
     }
 
     @Bean

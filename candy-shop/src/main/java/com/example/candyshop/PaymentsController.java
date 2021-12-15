@@ -17,6 +17,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64.Encoder;
 
+import com.example.rabbitMQ.RabbitMqSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -147,9 +148,12 @@ public class PaymentsController {
     @Autowired
     private PaymentsCommandRepository paymentRepo;
 
-    ConnectionFactory connectionFactory = new CachingConnectionFactory();
-    AmqpAdmin admin = new RabbitAdmin(connectionFactory);
-    AmqpTemplate template = new RabbitTemplate(connectionFactory);
+    //private CachingConnectionFactory connectionFactory;
+    @Value("${spring.rabbitmq.host}") private String rabbitmq ;
+    //AmqpAdmin admin = new RabbitAdmin(new CachingConnectionFactory(rabbitmq));
+    @Autowired
+    RabbitTemplate template;
+    //RabbitTemplate template = new RabbitTemplate();
     private String rabbitMQReceive;
 
     @RabbitListener(queues = "paymentConfirmation")
@@ -309,7 +313,7 @@ public class PaymentsController {
         model.addAttribute( "message", "Thank You for Your Payment! Your Order Number is: " + order_num ) ;
         paymentRepo.save(command);
 
-        admin.declareQueue(new Queue("paymentConfirmation"));
+        //admin.declareQueue(new Queue("paymentConfirmation"));
         template.convertAndSend("paymentConfirmation", command.email());
 
         // Wait until we receive the message from RabbitMQ Queue
